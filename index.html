@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>De Klik – Waar de verbinding ontstaat</title>
-<meta name="description" content="Netwerkevent op woensdag 16 december om 15.00 uur, georganiseerd door klas 2F. Maak kans op twee kaartjes voor Thuishaven!">
+<meta name="description" content="Proost, kletst en leer nieuwe mensen kennen op woensdag 16 december om 15.00 uur, georganiseerd door klas 2F. Maak kans op twee kaartjes voor Thuishaven!">
 <meta name="theme-color" content="#fcf4e9">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:title" content="De Klik – Waar de verbinding ontstaat">
-<meta property="og:description" content="Netwerkevent op woensdag 16 december om 15.00 uur. Maak kans op twee kaartjes voor Thuishaven!">
+<meta property="og:description" content="Proosten, kletsen en nieuwe mensen leren kennen op woensdag 16 december om 15.00 uur. Maak kans op twee kaartjes voor Thuishaven!">
 <meta property="og:url" content="https://diazwiersma.github.io/DeKlik/">
 <meta property="og:image" content="https://diazwiersma.github.io/DeKlik/logo.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -43,22 +43,58 @@ strong{font-weight:700}
 .ring .w2{animation-delay:.12s}
 @keyframes swing{0%,100%{transform:rotate(0)}12%{transform:rotate(-14deg)}28%{transform:rotate(11deg)}44%{transform:rotate(-7deg)}60%{transform:rotate(4deg)}78%{transform:rotate(-2deg)}}
 @keyframes wave{0%{opacity:0}20%{opacity:1}100%{opacity:0;transform:scale(1.25)}}
-.fade{opacity:0;animation:in .8s ease forwards}
+
+/* Tekst verschijnt pas nadat de envelop is geopend */
+.fade{opacity:0}
+body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function:ease;animation-fill-mode:forwards}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .d1{animation-delay:.1s}.d2{animation-delay:.9s}.d3{animation-delay:1.7s}
 .d4{animation-delay:2.6s}.d5{animation-delay:3.4s}.d6{animation-delay:4s}
+
+/* Envelop */
+.env{position:fixed;inset:0;z-index:10;background:var(--bg);border:0;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4dvh;
+  color:var(--wine);font-family:inherit;transition:opacity .7s ease;-webkit-tap-highlight-color:transparent}
+.env.gone{opacity:0;pointer-events:none}
+.env:focus-visible{outline:2px solid var(--wine);outline-offset:-8px}
+.envbox{display:block;position:relative;width:min(72vw,340px);aspect-ratio:3/2;background:var(--wine);
+  border-radius:18px;box-shadow:0 10px 30px rgba(107,15,31,.25);perspective:900px}
+.letter{display:block;position:absolute;left:8%;right:8%;top:10%;height:80%;background:#fffaf2;
+  border:2px solid var(--gold);border-radius:8px;z-index:1;transition:transform .7s ease .35s}
+.front{display:block;position:absolute;inset:0;background:#7d1527;border-radius:18px;z-index:2;
+  clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.flap{display:block;position:absolute;left:0;right:0;top:0;height:58%;background:#8f1a2e;border-radius:18px 18px 0 0;z-index:3;
+  clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease}
+.env.open .flap{transform:rotateX(180deg);z-index:0;transition:transform .6s ease,z-index 0s .3s}
+.env.open .letter{transform:translateY(-45%)}
+.env.open .hint,.env.open .teaser{opacity:0;transition:opacity .3s}
+.teaser{font-size:clamp(22px,4dvh,34px);font-weight:600;margin-bottom:-3dvh}
+.env:not(.open) .envbox{animation:nudge 3s ease-in-out 1s infinite}
+@keyframes nudge{0%,60%,100%{transform:none}66%{transform:translateY(-6px) rotate(-3deg)}72%{transform:translateY(0) rotate(3deg)}78%{transform:rotate(-2deg)}84%{transform:rotate(1deg)}90%{transform:none}}
+
 @media (prefers-reduced-motion:reduce){
-  .fade{animation:none;opacity:1}.ring .swing,.ring .wave{animation:none}
+  body.go .fade{animation:none;opacity:1}
+  .ring .swing,.ring .wave{animation:none}
+  .env,.letter,.flap{transition:none}
+  .env:not(.open) .envbox{animation:none}
 }
 </style>
+<noscript><style>.env{display:none}.fade{opacity:1}</style></noscript>
 <script data-goatcounter="https://fien.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+
+<button class="env" id="env" type="button" aria-label="Open de uitnodiging">
+  <span class="envbox"><span class="letter"></span><span class="front"></span><span class="flap"></span></span>
+  <span class="teaser">Er is post voor jou…</span>
+  <span class="hint">tik om te openen</span>
+</button>
+
 <main class="intro">
   <p class="fade d1">…Ja, zou jij wel eens willen weten waar dit nou over ging?</p>
   <p class="fade d2">Dat weet ik ook niet.</p>
-  <p class="fade d3">Wat ik wel weet, is dat je op<br><strong>woensdag 16 december om 15.00 uur</strong><br>naar een netwerkevent kunt gaan, georganiseerd door klas 2F.</p>
+  <p class="fade d3">Wat ik wel weet, is dat je op<br><strong>woensdag 16 december om 15.00 uur</strong><br>kunt komen proosten, kletsen en nieuwe mensen leren kennen.<br>Klas 2F zorgt voor de rest.</p>
 </main>
 
 <img class="logo fade d4" src="logo.jpg" width="1254" height="1254" alt="Logo van De Klik: twee silhouetten proosten met een glas. Waar de verbinding ontstaat.">
@@ -83,11 +119,18 @@ strong{font-weight:700}
 
 <script>
 (function(){
-  var btn=document.getElementById('bel'),ctx=null;
-  function ding(){
+  var btn=document.getElementById('bel'),env=document.getElementById('env'),ctx=null;
+
+  // Maak/ontgrendel de AudioContext binnen een tik (nodig voor iOS en Chrome)
+  function unlock(){
     try{
       ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();
       if(ctx.state==='suspended')ctx.resume();
+    }catch(e){}
+  }
+  function ding(){
+    try{
+      unlock();
       var t=ctx.currentTime;
       [[1568,.5],[2350,.22],[3136,.14],[4180,.07]].forEach(function(p){
         var o=ctx.createOscillator(),g=ctx.createGain();
@@ -103,9 +146,19 @@ strong{font-weight:700}
   function ring(){
     btn.classList.remove('ring');void btn.offsetWidth;btn.classList.add('ring');
   }
+
   btn.addEventListener('click',function(){ring();ding();});
-  // Animatie speelt meteen bij laden (geluid kan pas na een tik).
-  setTimeout(ring,4300);
+
+  env.addEventListener('click',function(){
+    if(env.classList.contains('open'))return;
+    unlock();                                  // de tik die geluid toestaat
+    env.classList.add('open');
+    setTimeout(function(){
+      env.classList.add('gone');
+      document.body.classList.add('go');
+      setTimeout(function(){ring();ding();},4300);   // bel zwaait en klinkt tegelijk
+    },1100);
+  });
 })();
 </script>
 </body>
