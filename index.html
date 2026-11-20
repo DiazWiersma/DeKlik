@@ -55,7 +55,7 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
 .env{position:fixed;inset:0;z-index:10;background:var(--bg);border:0;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4dvh;
   color:var(--wine);font-family:inherit;transition:opacity .7s ease;-webkit-tap-highlight-color:transparent}
-.env.gone{opacity:0;pointer-events:none}
+.env.gone{opacity:0;pointer-events:none;visibility:hidden;transition:opacity .7s ease,visibility 0s .7s}
 .env:focus-visible{outline:2px solid var(--wine);outline-offset:-8px}
 .envbox{display:block;position:relative;width:min(72vw,340px);aspect-ratio:3/2;background:var(--wine);
   border-radius:18px;box-shadow:0 10px 30px rgba(107,15,31,.25);perspective:900px}
@@ -67,7 +67,7 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
   clip-path:polygon(14% 0,86% 0,50% 100%);transform-origin:top;transition:transform .6s ease}
 .env.open .flap{transform:rotateX(180deg);z-index:0;transition:transform .6s ease,z-index 0s .3s}
 .env.open .letter{transform:translateY(-45%)}
-.env.open .hint,.env.open .teaser{opacity:0;transition:opacity .3s}
+.env.open .hint,.env.open .teaser{opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
 .teaser{font-size:clamp(22px,4dvh,34px);font-weight:600;margin-bottom:-3dvh}
 .env:not(.open) .envbox{animation:nudge 3s ease-in-out 1s infinite}
 @keyframes nudge{0%,60%,100%{transform:none}66%{transform:translateY(-6px) rotate(-3deg)}72%{transform:translateY(0) rotate(3deg)}78%{transform:rotate(-2deg)}84%{transform:rotate(1deg)}90%{transform:none}}
@@ -77,6 +77,7 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
   .ring .swing,.ring .wave{animation:none}
   .env,.letter,.flap{transition:none}
   .env:not(.open) .envbox{animation:none}
+  .env.gone{transition:none}
 }
 </style>
 <noscript><style>.env{display:none}.fade{opacity:1}</style></noscript>
