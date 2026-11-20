@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>De Klik – Waar de verbinding ontstaat</title>
-<meta name="description" content="Proost, kletst en leer nieuwe mensen kennen op woensdag 16 december om 15.00 uur, georganiseerd door klas 2F. Maak kans op twee kaartjes voor Thuishaven!">
+<meta name="description" content="Maak kans op 2 tickets voor Thuishaven! Kom langs op woensdag 16 december om 15.00 uur en ontdek dat netwerken best meevalt. Georganiseerd door klas 2F.">
 <meta name="theme-color" content="#fcf4e9">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:title" content="De Klik – Waar de verbinding ontstaat">
-<meta property="og:description" content="Proosten, kletsen en nieuwe mensen leren kennen op woensdag 16 december om 15.00 uur. Maak kans op twee kaartjes voor Thuishaven!">
+<meta property="og:description" content="Maak kans op 2 tickets voor Thuishaven! Kom langs op woensdag 16 december om 15.00 uur en ontdek dat netwerken best meevalt.">
 <meta property="og:url" content="https://diazwiersma.github.io/DeKlik/">
 <meta property="og:image" content="https://diazwiersma.github.io/DeKlik/logo.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@ p{font-size:clamp(17px,3dvh,26px);line-height:1.3;max-width:30em;text-wrap:balan
 .intro .gap{margin-top:1.4dvh}
 strong{font-weight:700}
 .logo{height:min(32dvh,80vw);width:auto;aspect-ratio:1;display:block}
-.outro{font-size:clamp(18px,3.3dvh,28px)}
+.outro{font-size:clamp(17px,3dvh,26px)}
 .bellwrap{display:flex;flex-direction:column;align-items:center;gap:.4dvh;
   background:none;border:0;cursor:pointer;color:var(--wine);font-family:inherit;-webkit-tap-highlight-color:transparent}
 .bellwrap:focus-visible{outline:2px solid var(--wine);outline-offset:6px;border-radius:8px}
@@ -62,9 +62,9 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
 .letter{display:block;position:absolute;left:8%;right:8%;top:10%;height:80%;background:#fffaf2;
   border:2px solid var(--gold);border-radius:8px;z-index:1;transition:transform .7s ease .35s}
 .front{display:block;position:absolute;inset:0;background:#7d1527;border-radius:18px;z-index:2;
-  clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
-.flap{display:block;position:absolute;left:0;right:0;top:0;height:58%;background:#8f1a2e;border-radius:18px 18px 0 0;z-index:3;
-  clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease}
+  clip-path:polygon(0 0,14% 0,50% 58%,86% 0,100% 0,100% 100%,0 100%)}
+.flap{display:block;position:absolute;left:0;right:0;top:0;height:58%;background:#8f1a2e;z-index:3;
+  clip-path:polygon(14% 0,86% 0,50% 100%);transform-origin:top;transition:transform .6s ease}
 .env.open .flap{transform:rotateX(180deg);z-index:0;transition:transform .6s ease,z-index 0s .3s}
 .env.open .letter{transform:translateY(-45%)}
 .env.open .hint,.env.open .teaser{opacity:0;transition:opacity .3s}
@@ -88,19 +88,19 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
 <button class="env" id="env" type="button" aria-label="Open de uitnodiging">
   <span class="envbox"><span class="letter"></span><span class="front"></span><span class="flap"></span></span>
   <span class="teaser">Er is post voor jou…</span>
-  <span class="hint">tik om te openen</span>
+  <span class="hint">speciaal voor jou, tik maar</span>
 </button>
 
 <main class="intro">
   <p class="fade d1">…Ja, zou jij wel eens willen weten waar dit nou over ging?</p>
   <p class="fade d2">Dat weet ik ook niet.</p>
-  <p class="fade d3">Wat ik wel weet, is dat je op<br><strong>woensdag 16 december om 15.00 uur</strong><br>kunt komen proosten, kletsen en nieuwe mensen leren kennen.<br>Klas 2F zorgt voor de rest.</p>
+  <p class="fade d3">Wat ik wel weet, is dat je kans maakt op<br><strong>2 tickets voor Thuishaven</strong>.<br>Wie weet sta jij er binnenkort!</p>
 </main>
 
 <img class="logo fade d4" src="logo.jpg" width="1254" height="1254" alt="Logo van De Klik: twee silhouetten proosten met een glas. Waar de verbinding ontstaat.">
 
 <footer style="display:flex;flex-direction:column;align-items:center;gap:1dvh">
-  <p class="outro fade d5">Kom ernaartoe en maak kans op twee kaartjes voor Thuishaven!</p>
+  <p class="outro fade d5">Kom langs op <strong>woensdag 16 december om 15.00 uur</strong> en ontdek dat netwerken best meevalt tijdens het evenement van klas 2F.</p>
   <button class="bellwrap fade d6" id="bel" type="button" aria-label="Tik op de bel">
     <svg class="bell" viewBox="0 0 120 100" aria-hidden="true">
       <g class="wave w1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M92 14 q9 6 11 17"/><path d="M28 14 q-9 6 -11 17"/></g>
@@ -132,14 +132,34 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
     try{
       unlock();
       var t=ctx.currentTime;
-      [[1568,.5],[2350,.22],[3136,.14],[4180,.07]].forEach(function(p){
-        var o=ctx.createOscillator(),g=ctx.createGain();
-        o.type='sine';o.frequency.value=p[0];
-        g.gain.setValueAtTime(0,t);
-        g.gain.linearRampToValueAtTime(p[1],t+.005);
-        g.gain.exponentialRampToValueAtTime(.0001,t+1.8);
+      // Magisch belletje: vier noten omhoog, elk met een zachte boventoon
+      [1047,1319,1568,2093].forEach(function(f,i){
+        var s=t+i*.09;
+        [[f,.28,1.2],[f*2,.08,.6]].forEach(function(p){
+          var o=ctx.createOscillator(),g=ctx.createGain();
+          o.type='sine';o.frequency.value=p[0];
+          g.gain.setValueAtTime(0,s);
+          g.gain.linearRampToValueAtTime(p[1],s+.004);
+          g.gain.exponentialRampToValueAtTime(.0001,s+p[2]);
+          o.connect(g);g.connect(ctx.destination);
+          o.start(s);o.stop(s+p[2]+.05);
+        });
+      });
+    }catch(e){}
+  }
+  // Glinster bij het openen: drie hoge, zachte tikjes
+  function openSound(){
+    try{
+      unlock();
+      var t=ctx.currentTime;
+      [2400,3200,4000].forEach(function(f,k){
+        var s=t+k*.06,o=ctx.createOscillator(),g=ctx.createGain();
+        o.type='sine';o.frequency.value=f;
+        g.gain.setValueAtTime(0,s);
+        g.gain.linearRampToValueAtTime(.12,s+.004);
+        g.gain.exponentialRampToValueAtTime(.0001,s+.45);
         o.connect(g);g.connect(ctx.destination);
-        o.start(t);o.stop(t+1.9);
+        o.start(s);o.stop(s+.5);
       });
     }catch(e){}
   }
@@ -152,6 +172,7 @@ body.go .fade{animation-name:in;animation-duration:.8s;animation-timing-function
   env.addEventListener('click',function(){
     if(env.classList.contains('open'))return;
     unlock();                                  // de tik die geluid toestaat
+    openSound();
     env.classList.add('open');
     setTimeout(function(){
       env.classList.add('gone');
